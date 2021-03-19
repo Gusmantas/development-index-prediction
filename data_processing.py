@@ -1,9 +1,11 @@
 import pandas as pd 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import sqlite3
 
 def prepare_data():
-  df = pd.read_csv('development-index.csv')
+  con = sqlite3.connect("development-index.db")
+  df = pd.read_sql_query('SELECT * FROM developmentIndex', con)
 
   # print(df.head())
   # print(df.shape)
@@ -13,7 +15,7 @@ def prepare_data():
 
   # Removing area column since we don't need it
 
-  df.drop(labels=['Area'], axis=1, inplace=True)
+  df.drop(labels=['Area\n'], axis=1, inplace=True)
 
   # print(df.head())
   
@@ -41,7 +43,9 @@ def prepare_data():
   # Returning all values so we can train model elswhere, as well as
   # returning standardScaler since it is fitted and ready to be applied on new values
   data = {"X_train": X_train, "X_test": X_test, "y_train": y_train, "y_test": y_test, "standardScaler": sc}
+  con.close()
   return data
 
 
 
+prepare_data()
