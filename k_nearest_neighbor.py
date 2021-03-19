@@ -13,7 +13,7 @@ X_train, X_test, y_train, y_test, standardScaler = itemgetter(
     'X_train', 'X_test', 'y_train', 'y_test', 'standardScaler')(data)
 
 knn_classifier = KNeighborsClassifier(n_neighbors=4, metric='minkowski', p=2)
-
+print('KNN Trained OK')
 
 def train_knn_model():
     # Training KNN model
