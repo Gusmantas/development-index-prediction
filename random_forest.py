@@ -26,7 +26,7 @@ def train_random_forest():
     # cm = confusion_matrix(y_test, rf_predict)
     # Displaying accuracy score in percentage
     # print(accuracy_score(y_test, rf_predict))
-
+    print('Random Forest Trained OK')
 
 def predict_random_forest(values):
     # Creating an ndArray (2d array in numpy) so we can predict results
@@ -38,8 +38,7 @@ def predict_random_forest(values):
     return rf_predict
 
 
-train_random_forest()
-
+# train_random_forest()
 # Population, population density, GDP, Literacy, Infant mortality in an array
 # values = [5450661, 126.5,	31100, 100, 4.56]
 # print('prediction')
