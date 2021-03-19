@@ -43,7 +43,3 @@ def prepare_data():
 
 
 
-
-data = prepare_data()
-print(data)
-
