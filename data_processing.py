@@ -38,7 +38,9 @@ def prepare_data():
   X_train = sc.fit_transform(X_train)
   X_test = sc.fit_transform(X_test)
 
-  data = {"X_train": X_train, "X_test": X_test, "y_train": y_train, "y_test": y_test}
+  # Returning all values so we can train model elswhere, as well as
+  # returning standardScaler since it is fitted and ready to be applied on new values
+  data = {"X_train": X_train, "X_test": X_test, "y_train": y_train, "y_test": y_test, "standardScaler": sc}
   return data
 
 
