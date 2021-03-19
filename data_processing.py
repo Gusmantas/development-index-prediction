@@ -1,4 +1,6 @@
 import pandas as pd 
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 def prepare_data():
   df = pd.read_csv('development-index.csv')
@@ -15,11 +17,33 @@ def prepare_data():
 
   # print(df.head())
   
+  # Splitting into dependent/independent variables
   X = df.iloc[:, :-1].values
   y = df.iloc[:, -1].values
 
-  print(X)
-  print(type(X))
-  print(y)
+  # print(X)
+  # print(type(X))
+  # print(y)
 
-prepare_data()
+  # Splitting into train/test sets
+  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+  # print(X_train)
+  # print(X_test)
+  # print(y_train)
+  # print(y_test)
+
+  # Feature scaling
+  sc = StandardScaler()
+  X_train = sc.fit_transform(X_train)
+  X_test = sc.fit_transform(X_test)
+
+  data = {"X_train": X_train, "X_test": X_test, "y_train": y_train, "y_test": y_test}
+  return data
+
+
+
+
+data = prepare_data()
+print(data)
+
