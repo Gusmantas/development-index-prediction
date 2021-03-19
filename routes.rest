@@ -1,0 +1,10 @@
+POST http://127.0.0.1:8000/api/predict
+
+{
+  "population":10175014, 
+  "pop-density": 62.2, 
+  "gdp":6900,	
+  "literacy":74.2,	
+  "infant-mortality":24.77
+
+}

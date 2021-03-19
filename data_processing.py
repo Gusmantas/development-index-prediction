@@ -3,8 +3,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import sqlite3
 
+con = sqlite3.connect("development-index.db")
+
 def prepare_data():
-  con = sqlite3.connect("development-index.db")
   df = pd.read_sql_query('SELECT * FROM developmentIndex', con)
 
   # print(df.head())
@@ -43,9 +44,17 @@ def prepare_data():
   # Returning all values so we can train model elswhere, as well as
   # returning standardScaler since it is fitted and ready to be applied on new values
   data = {"X_train": X_train, "X_test": X_test, "y_train": y_train, "y_test": y_test, "standardScaler": sc}
-  con.close()
+  # con.close()
   return data
 
+def getDataset():
+  current = con.cursor()
+  current.execute('SELECT * FROM developmentIndex')
 
+  rows = current.fetchall()
+  # con.close()
+  dicts = []
+  for row in rows:
+    dicts.append(row)
+  return rows
 
-prepare_data()
