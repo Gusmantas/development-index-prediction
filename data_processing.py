@@ -56,5 +56,8 @@ def getDataset():
   dicts = []
   for row in rows:
     dicts.append(row)
-  return rows
+  # print(dicts)
+  return dicts
+
+# getDataset()
 

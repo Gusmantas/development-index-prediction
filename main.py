@@ -26,7 +26,7 @@ async def predict_results(req):
 async def get_dataset(req):
   from data_processing import getDataset
   dataset = getDataset()
-    
+  # print(dataset)
   return res.json(dataset)
 
 # When we navigate to '/' - serve the dist folder
