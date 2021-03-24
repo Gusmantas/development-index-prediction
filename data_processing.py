@@ -2,8 +2,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import sqlite3
+from utility import prepare_posting_data
 
 con = sqlite3.connect("development-index.db")
+current = con.cursor()
 
 def prepare_data():
   df = pd.read_sql_query('SELECT * FROM developmentIndex', con)
@@ -16,7 +18,7 @@ def prepare_data():
 
   # Removing area column since we don't need it
 
-  df.drop(labels=['Area\n'], axis=1, inplace=True)
+  df.drop(labels=['Area'], axis=1, inplace=True)
 
   # print(df.head())
   
@@ -24,17 +26,8 @@ def prepare_data():
   X = df.iloc[:, :-1].values
   y = df.iloc[:, -1].values
 
-  # print(X)
-  # print(type(X))
-  # print(y)
-
   # Splitting into train/test sets
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-
-  # print(X_train)
-  # print(X_test)
-  # print(y_train)
-  # print(y_test)
 
   # Feature scaling
   sc = StandardScaler()
@@ -44,20 +37,22 @@ def prepare_data():
   # Returning all values so we can train model elswhere, as well as
   # returning standardScaler since it is fitted and ready to be applied on new values
   data = {"X_train": X_train, "X_test": X_test, "y_train": y_train, "y_test": y_test, "standardScaler": sc}
-  # con.close()
   return data
 
 def getDataset():
-  current = con.cursor()
   current.execute('SELECT * FROM developmentIndex')
-
   rows = current.fetchall()
-  # con.close()
+
   dicts = []
   for row in rows:
     dicts.append(row)
-  # print(dicts)
   return dicts
 
-# getDataset()
+def savePrediction(values, predictedIndex):
+  dataArray = prepare_posting_data(values, predictedIndex)
+  print(dataArray)
+  query = '''INSERT INTO developmentIndex(Population, Area, Pop_density, GDP, Literacy, Infant_mortality, Development_index) 
+            VALUES(?, ?, ?, ?, ?, ?, ?)'''
+  current.execute(query, dataArray)
+  con.commit()
 

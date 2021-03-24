@@ -1,4 +1,9 @@
-#myChart {
+/* #myChart {
   width: 1200px !important;
   height: 600px !important;
+} */
+
+.welcome-paragraph{
+  background-color: aqua;
+  margin: 0, auto;
 }
