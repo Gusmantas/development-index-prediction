@@ -20,9 +20,7 @@ async def predict_results(req):
     knn_prediction = predict_knn(prediction_values)
     random_forest_prediction = predict_random_forest(prediction_values)
 
-    print('knn', knn_prediction[0])
-
-    savePrediction(values, random_forest_prediction)
+    savePrediction(values, knn_prediction) if knn_prediction[0] > random_forest_prediction[0] else savePrediction(values, random_forest_prediction)
     train_knn_model()
     train_random_forest()
 

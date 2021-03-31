@@ -1,9 +1,62 @@
-/* #myChart {
-  width: 1200px !important;
-  height: 600px !important;
-} */
+*{
+  box-sizing: border-box;
+}
 
-.welcome-paragraph{
-  background-color: aqua;
-  margin: 0, auto;
+main{
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 100px; */
+}
+#myChart {
+  max-width: 60%;
+}
+
+body{
+  background-color: rgb(29, 28, 37);
+  margin: 0;
+}
+
+form{
+  display: block;
+  max-width: 30%;
+  height: 300px;
+  padding: 20px;
+  /* margin-top: 100px; */
+}
+
+#prediction{
+  color: white;
+  margin-top: 40px;
+  border-radius: 10px;
+  background-color: rgba(29, 28, 37, 0.589);
+  padding: 20px;
+}
+
+form input{
+  margin: 0 auto;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 3px;
+  width: 100%;
+}
+
+form button{
+  float: right;
+  margin-top: 10px;
+}
+
+
+article p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  padding: 20px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+article{
+  display: block;
+  width: 600px;
+  margin: 50px auto;
 }

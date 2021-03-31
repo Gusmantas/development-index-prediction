@@ -42,7 +42,7 @@ function calculateData(data) {
 
 function createChart(pieData) {
   var chart = new Chart(ctx, {
-    type: 'pie',
+    type: 'bar',
     data: {
       labels: ['Development index 1', 'Development index 2', 'Development index 3', 'Development index 4',],
       datasets: [{
@@ -80,9 +80,9 @@ $('#predict-form').submit(async function (e) {
   console.log(prediction)
   
   $('#prediction').html(`
-    K-Nearest-Neighbor model development index prediction: <em>${prediction['knn']}</em>
+    K-Nearest-Neighbor prediction: <em>${prediction['knn']}</em>
     <br>
-    Random-Forest model development index prediction: <em>${prediction['random-forest']}</em> <br>
+    Random-Forest prediction: <em>${prediction['random-forest']}</em> <br>
     Note! <br>
     KNN accuracy score: <em>${parseFloat(prediction['knn-score'] * 100).toFixed(1)}%</em> <br>
     Random Forest accuracy score: <em>${parseFloat(prediction['rf-score'] * 100).toFixed(1)}%</em> 

@@ -10,28 +10,29 @@
 <body>
   <article>
     <p class="welcome-paragraph">
-      Hello! To predict a development index value please fill in the form below with required fields.
+      Hello! <br> To predict a development index value please fill in the form below with required fields.
       Each time a new value is predicted - it is also being added to database and both machine learning models are 
-      retrained. This project has two models:
-      <ul>
-        <li>K-Nearest-Neighbor model with inital accuracy of 86%</li>
-        <li>Random Forest model with initial accuracy of 91%</li>
-      </ul>
+      retrained. This project has two models: <br>
+      K-Nearest-Neighbor model with inital accuracy of 86% <br>
+      Random Forest model with initial accuracy of 91% <br>
       Below, when predicting values, the accuracy changes dramatically if random values are entered. Try it out! 
     </p>
   </article>
-  <canvas id="myChart"></canvas>
 
-  <form id="predict-form">
-    <input type="number" id="population" required placeholder="Population..">
-    <input type="number" id="area" placeholder="Area..">
-    <input type="number" id="pop-density" required placeholder="Population density..">
-    <input type="number" id="gdp" required placeholder="GDP..">
-    <input type="number" id="literacy" required placeholder="Literacy..">
-    <input type="number" id="infant-mortality" required placeholder="Infant Mortality..">
-    <button type="submit" class="predict-btn">Predict</button>
-  </form>
-  <h4 id="prediction"></h4>
+  <main>
+    <canvas id="myChart"></canvas>
+  
+    <form id="predict-form">
+      <input type="number" id="population" required placeholder="Population..">
+      <input type="number" id="area" placeholder="Area..">
+      <input type="number" id="pop-density" required placeholder="Population density..">
+      <input type="number" id="gdp" required placeholder="GDP..">
+      <input type="number" id="literacy" required placeholder="Literacy..">
+      <input type="number" id="infant-mortality" required placeholder="Infant Mortality..">
+      <button type="submit" class="predict-btn">Predict</button>
+      <h4 id="prediction"></h4>
+    </form>
+  </main>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="main.js"></script>
